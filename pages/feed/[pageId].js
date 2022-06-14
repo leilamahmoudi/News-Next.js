@@ -1,9 +1,16 @@
 export const Feed = ({ pageNumber, articles }) => {
-  return <div>Feed</div>;
+  console.log("HEREEEEE", pageNumber, articles);
+  return (
+    <div className={styles.main}>
+      {articles.map((article, index) => {
+        <div key={index} className={styles.post}></div>;
+      })}
+    </div>
+  );
 };
 
 export const getServerSideProps = async (pageContext) => {
-  const pageNumber = pageContext.query.pageId;
+  let pageNumber = pageContext.query.pageId;
 
   if (!pageNumber || pageNumber < 1 || pageNumber > 5) {
     return {
@@ -14,12 +21,21 @@ export const getServerSideProps = async (pageContext) => {
     };
   }
   const apiResponse = await fetch(
-    `https://newsapi.org/v2/top-headlines?country=us&pageSize=5&page=${pageNumber}`,
+    `https://newsapi.org/v2/everything?q=US&pageSize=5&page=${pageNumber}`,
     {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_NEWS_KEY}`,
       },
     }
-  ).then((res) => res.json());
+  );
+  const apiJson = await apiResponse.json();
+  const { articles } = apiJson;
+
+  return {
+    props: {
+      articles,
+      pageNumber: Number.parseInt(pageNumber),
+    },
+  };
 };
 export default Feed;
