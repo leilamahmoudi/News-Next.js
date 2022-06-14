@@ -7,6 +7,7 @@ export const Feed = ({ pageNumber, articles }) => {
         <div key={index} className={styles.post}>
           <h1>{article.title}</h1>
           <p>{article.description}</p>
+          {!!article.urlToImage && <img src={article.urlToImage} />}
         </div>
       ))}
     </div>
