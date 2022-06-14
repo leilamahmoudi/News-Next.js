@@ -6,10 +6,19 @@
 
   margin-top: 50px;
 }
+.main a {
+  color: rgb(13, 13, 104);
+}
+.main a:hover {
+  color: rgb(119, 119, 240);
+}
 .employeeOfTheMonth {
   text-align: center;
 }
 .employeeOfTheMonth img {
   width: 250px;
   border-radius: 100%;
+}
+.employeeOfTheMonth h4 {
+  color: gray;
 }
