@@ -33,3 +33,11 @@
   cursor: not-allowed;
   color: rgb(179, 179, 179);
 }
+@media (max-width: 991px) {
+  .main {
+    margin: 77px 15px 20px;
+  }
+  .post {
+    width: unset;
+  }
+}

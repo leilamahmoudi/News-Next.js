@@ -19,3 +19,16 @@
 .main div:hover {
   color: rgb(168, 168, 168);
 }
+
+@media (max-width: 991px) {
+  .main,
+  .toolbar {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0.8rem;
+  }
+  .main div {
+    font-size: 16px;
+    margin: 25px 10px;
+  }
+}
